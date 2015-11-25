@@ -1,0 +1,83 @@
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Entree</title>
+
+		<!-- Bootstrap -->
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' integrity='sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==' crossorigin='anonymous'>
+		<title>Bootstrap Example</title>
+		  <meta charset='utf-8'>
+		  <meta name='viewport' content='width=device-width, initial-scale=1'>
+		  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+		  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+		  <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+	</head>
+<body>
+
+
+<input type='text'></input><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#searchresults'>Search</button>
+<!-- Modal -->
+<div class='modal fade' id='searchresults' role='dialog'>
+<div class='modal-dialog modal-lg'>
+<div class='modal-content'>
+	<div class='modal-header'>
+		<button type='button' class='close' data-dismiss='modal'>&times;</button>
+		<h4 class='modal-title'>Search Results</h4>
+	</div>
+	<div class='modal-body'>
+		<div class='container' style='width:100%'>
+			<div class='feed' id='addresults'>
+				<!--		INSERT THUMBNAILS HERE		-->
+				<div class='thumbnail'>
+					<!--			EDIT IMAGE LOCATION			-->
+					<img class='foodimage' src='img/yum1.jpg' alt='sampleimage' value='Sandwiches' id='test'>
+					<div class='caption'>
+						<h3>Ice Cream Sundae</h3>
+						<p><a href='#'>@samp</a></p>
+
+						<div class='panel-group'>		
+							<div class='panel panel-default'>
+								<!--			EDIT ID HREF			-->
+								<div class='panel-heading' data-toggle='collapse' href='#icecreamsundae-result'>
+									<h4 class='panel-title'><a>More</a></h4>
+								</div>
+								<!--			EDIT ID			-->
+								<div id='icecreamsundae-result' class='panel-collapse collapse'>
+									<div class='panel-body'>
+										<!--			INSERT INGREDIENTS HERE			-->
+										<h3 style='margin-top: 0px'>Ingredients</h3>
+										<div class='list-group ingredients'>
+											<a href='#' class='list-group-item'><input type='checkbox' aria-label='...'>&nbsp;&nbsp;Turkey</a>
+										</div>
+										<hr>
+										<!--			INSERT INSTRUCTIONS HERE			-->
+										<h3>Instructions</h3>
+										<ol class='list-group instructions'>
+											<li class='list-group-item'>Preheat oven to 325° F</li>
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>
+	<div class='modal-footer'>
+	<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+	</div>
+</div>
+</div>
+</div>
+
+
+ 
+
+
+				
+
+</body>

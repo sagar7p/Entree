@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Entree</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/guestmain.css" type="text/css" media="screen">
+
+      <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script>
+        $(document).ready(function(){
+          $(".Explore").hide();
+          $(".hide").hide();
+        }); 
+      </script>
+
+  </head>
+  <body>
+      
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand brand" href="#"><h1>Entree</h1></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle id" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sampurna <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li class="Navigate hide"><a href="#">My Recipes</a></li>
+                    <li class="hide"><a href="#">My Profile</a></li>
+                    <li class="hide" role="separator" class="divider"></li>
+                    <li class="logout"><a href="#">Log In</a></li>
+                  </ul>
+                </li>
+                  <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="searchtext" placeholder="I'm hungry">
+                        </div>
+                        <span class="btn btn-default" id="searchquery">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                          </span>
+                      </form>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
+
+    <div class = "Explore"> <div class="col-sm-1">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Explore</h3>
+          </div>
+          <div class="panel-body">
+              <div class="feed">
+                    
+                  </div>
+                </div>
+        </div>
+    </div> </div>
+    
+    <div class = "Featured"> <div class="col-sm-10">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Featured</h3>
+          </div>
+          <div class="panel-body">
+               <!--<div class="well well-lg"> </div>-->
+               <div class="featured">
+               
+                </div>
+            </div>
+        </div>
+    </div> 
+	  
+</div>
+	  	 
+<!--	SEARCH RESULTS	  -->
+<button style="display:none" id="opensearchresults" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#searchresults">Search</button>
+<!-- Modal -->
+<div class="modal fade" id="searchresults" role="dialog">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Search Results</h4>
+</div>
+<div class="modal-body">
+<div class="container" style="width:100%">
+<div id="thumbnailinsertionpoint">
+	<!--		INSERT THUMBNAILS HERE		-->
+</div>
+</div> 
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+      
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!--Parse Stuff-->
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+     <script type="text/javascript">
+       Parse.initialize("TL1YYSuP7TKOXiAirFNbx2VcdOF6VEZ1ztWqPSns", "DKePFTkXxpqicbWlg0HJPB8CykceYR0Cmpq2O69P");
+            $(".foodimage").each(function(index) {
+                var foodimage = $(this);
+                var Recipe = Parse.Object.extend("Recipe");
+                var query = new Parse.Query(Recipe);
+                console.log($(this).attr("value"));
+                query.equalTo("Name", $(this).attr("value"));
+                query.find({
+                  success: function(results) {
+                      for (var i = 0; i < results.length; i++) {
+                          var recipe = results[i];
+                          var photo = recipe.get("File");
+                        foodimage.attr("src",photo.url());
+                        foodimage.css("width","100%");
+                    }       
+                  },
+                  error: function(error) {
+                      console.log("error")
+                  }
+                });
+            });
+            
+        /*$("button").on("click",function() {
+            var fileUploadControl = $("#photoUpload")[0];
+            if (fileUploadControl.files.length > 0) {
+              var file = fileUploadControl.files[0];
+              var name = "photo.jpg";
+              var parseFile = new Parse.File(name, file);
+              parseFile.save().then(function() {
+                    alert('File saved, now saving product with file reference...');
+                    var Recipe = Parse.Object.extend("Recipe");
+                    var recipe = new Recipe();
+                    var name = $("#name").val();
+                    recipe.set("Name",name);
+                    recipe.set("File",parseFile);
+                    recipe.save();
+                  // The file has been saved to Parse.
+                }, function(error) {
+                    alert('Failed to save file: ' + error.description);
+                  // The file either could not be read, or could not be saved to Parse.
+                });
+            }
+        });*/
+        
+      </script>
+  </body>
+</html>

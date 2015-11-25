@@ -1,0 +1,26 @@
+.navbar navbar-default {
+    height: 300px;
+}
+
+.navbar-brand {
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+}
+
+
+.Explore {
+	margin-left: 12.5%;
+}
+
+.Featured {
+	margin-right: 12.5%;
+}
+
+.panel-body {
+	padding: 0;
+}
+
+.thumbnail {
+	margin: 20px;
+}

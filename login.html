@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://getbootstrap.com/examples/signin/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./login_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./login_files/signin.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./login_files/ie-emulation-modes-warning.js"></script><style type="text/css"></style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+
+     <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" id="inputEmail" class="form-control USERNAME" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control PASSWORD" placeholder="Password" required="" value="">
+        <!--<div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>-->
+        
+        <div class="Error">This text will change if there is an error</div>
+      </form>
+
+      <button class="btn btn-lg btn-primary btn-block signin" type="">Sign in</button>
+       <!-- Button trigger modal -->
+      <button class="btn btn-lg btn-primary btn-block register" type="" data-toggle="modal" data-target="#register">Register</button>
+      <button class="btn btn-lg btn-primary btn-block guestmode" type="">Guest Mode</button>
+      
+
+      
+        <!-- Modal -->
+        <div class="modal fade" id="register" role="dialog" >
+            <div class="modal-dialog modal-lg" width="80%">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Register Now!</h4>
+                </div>
+
+
+                <!-- CHANGE THIS -->
+                <div class="modal-body">
+                  <form class="form-horizontal col-sm-12">
+
+                    <div class="form-group"><label>First Name</label><input class="form-control" id= "first" placeholder="Sahil" data-placement="top" data-trigger="manual"  type="text"></div>
+
+                    <div class="form-group"><label>Last Name</label><input class="form-control" id="last" placeholder="Lele" data-placement="top" data-trigger="manual"  type="text"></div>
+
+                    <div class="form-group"><label>E-Mail</label><input class="form-control" id="email" placeholder="you@email.com" data-placement="top" data-trigger="manual" type="text"></div>
+
+                    <div class="form-group username"><label>Username</label><input class="form-control required" id="username" placeholder="@ilurveCS" data-placement="top" data-trigger="manual" type="text"></div>
+
+                    <div class="form-group username"><label>Password</label><input class="form-control required" id="password" type="password" placeholder="********" data-placement="top" data-trigger="manual"></div>
+
+                    <div class="form-group"><label>Favorite Food</label><textarea class="form-control" id="food" placeholder="Your favorite food here.." data-placement="top" data-trigger="manual"></textarea></div>
+
+                    <div class="form-group"><button type="submit" class="btn btn-primary pull-right registerNOW">Register!</button> <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p></div>
+                  </form>
+                </div>
+                  <div class="modal-footer"> </div>
+              </div>
+              
+            </div>
+          </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./login_files/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html>

@@ -1,0 +1,38 @@
+.navbar navbar-default {
+    height: 300px;
+}
+
+.navbar-brand{
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+}
+
+.Recipes {
+	margin-left: 12.5%;
+}
+
+.Grocery {
+	margin-right: 12.5%;
+}
+
+.panel-body {
+	padding: 0;
+}
+
+.thumbnail {
+	margin: 20px;
+}
+
+.list-group {
+	margin: 30px;
+}
+
+.list-group-item:hover{
+	background-color: #337ab7;
+	color: #ffffff;
+}
+
+.DoneShopping, .AddItem, .NewRecipe {
+	margin: 30px;
+}
