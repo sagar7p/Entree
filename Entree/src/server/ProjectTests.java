@@ -39,10 +39,10 @@ public class ProjectTests {
 		/*for(int i = 0; i < profile.getPosts().size(); i++) {
 			   System.out.println(profile.getPosts().get(i).getName());
 		   }*/
-		HashSet<Post> recipes= (HashSet<Post>) msql.getAllRecipesFromIngredients("tacos");
+		/*HashSet<Post> recipes= (HashSet<Post>) msql.getAllRecipesFromIngredients("tacos");
 		for(Post recipe : recipes) {
 			System.out.println(recipe.getName());
-		}
+		}*/
 		/*String [] data = msql.getUserInfo("@sagar");
 		for(int i =0; i < 3; i++) {
 			System.out.println(data[i]);
@@ -53,7 +53,8 @@ public class ProjectTests {
 		}*/
 		/*PersonalPage profile1 = new PersonalPage("@");
 		System.out.println(profile1.getFollowing());*/
-		msql.addItem("@sagar", "@sahil", 3);
+		//msql.addItem("@sagar", "@sahil", 3);
+		System.out.println(msql.unFollow("@sagar", "@kevin", true));
 		msql.stop();
 	}
 	

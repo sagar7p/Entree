@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -47,8 +48,8 @@ public class SQLDriver {
 	
 	public void connect() {
 		try {
-            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Entree?user=root&password=");
-			con = DriverManager.getConnection("jdbc:mysql://entree-repo.cqemh2gaogyy.us-west-2.rds.amazonaws.com:3306/Entree?user=kevin&password=pass");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Entree?user=root&password=");
+			//con = DriverManager.getConnection("jdbc:mysql://entree-repo.cqemh2gaogyy.us-west-2.rds.amazonaws.com:3306/Entree?user=kevin&password=pass");
 		} catch (SQLException e) {
 			System.out.println("Could not connect");
 			try {
@@ -217,7 +218,6 @@ public class SQLDriver {
 					}
 				}
 				String list = set.getString(type + 4);
-				System.out.println("Frrom Set" + list);
 
 				if(list != null) {
 					if(list.indexOf(',') == -1) {
@@ -383,6 +383,49 @@ public class SQLDriver {
 			e.printStackTrace();
 		}
 		return null;
+			
+	}
+	
+	//unfollow someone
+	public boolean unFollow(String user, String target, boolean checking) {
+		String [] following = addItem(user, null, 3);
+		ArrayList<String> listOfFollowing = new ArrayList<String>(Arrays.asList(following));
+		if(checking) {
+			return listOfFollowing.contains(target);
+		}
+		boolean exists =  listOfFollowing.remove(target);
+		following = listOfFollowing.toArray(new String[listOfFollowing.size()]);
+		if(exists) {
+			String [] followers = addItem(target, null, 2);
+			ArrayList<String> listOfFollowers = new ArrayList<String>(Arrays.asList(followers));
+			listOfFollowers.remove(user);
+			followers = listOfFollowers.toArray(new String[listOfFollowers.size()]);
+			PreparedStatement ps3;
+			try {
+				ps3 = con.prepareStatement(addFollowerToUser);
+				ps3.setString(2, target);
+				ps3.setString(1, Arrays.toString(followers).substring(1, Arrays.toString(followers).length() - 1));
+				ps3.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+		}
+		try {
+			PreparedStatement ps2 = con.prepareStatement(addFollowingToUser);
+			ps2.setString(2, user);
+			ps2.setString(1, Arrays.toString(following).substring(1, Arrays.toString(following).length() - 1));
+			ps2.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return exists;
+		
+		
+		
 		
 		
 	}
