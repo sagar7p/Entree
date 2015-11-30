@@ -104,7 +104,7 @@ public class BrowserFeed extends Thread {
 					DOMElement logout = document.findElement(By.className("logout"));
 					
 					DOMElement id = document.findElement(By.className("id"));
-					id.setInnerHTML(username);
+					id.setInnerHTML("@"+username);
 
 					// attempting to navigate by clicking
 					logout.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
@@ -358,7 +358,7 @@ public class BrowserFeed extends Thread {
 										System.out.println(p.getNumberOfReheats());
 										System.out.println(div.getInnerHTML());
 										div.setInnerHTML("<h3>" + p.getName() + "</h3>" + "<p>"
-												+ p.getUsername() + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
+												+ "@" + p.getUsername() + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
 												+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>" + "<p>"
 												+ "<p class='btn btn-primary' role='button' name='" + p.getName() + "post'><span class ='"
 												+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
@@ -395,7 +395,7 @@ public class BrowserFeed extends Thread {
 		String parsedDate = monthMap.get(month) + rest;
 		String html = "<div class='thumbnail'>" + "<img class='foodimage'src=''  value='"
 				+ p.getName() + "'>" + "<div class='caption' id = '" + p.getName().replaceAll("\\s", "") + "post'>" + "<h3>" + p.getName() + "</h3>" + "<p>" +"<a href='#' value='"+p.getUsername()+"' class='toprofile'>"
-				+ p.getUsername() + "</a>" + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
+				+ "@" + p.getUsername() + "</a>" + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
 				+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>" + "<p>"
 				+ "<p class='btn btn-primary' role='button' name='" + p.getName() + "'><span class ='"
 				+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
@@ -450,7 +450,7 @@ public class BrowserFeed extends Thread {
 		String username = p.getUsername().substring(1, p.getUsername().length()).replace("\\s", "");
 		String html = "<div id='"+username+"' class='panel panel-default'>"
 				+ "<div class='panel-heading' data-toggle='collapse' href='#"+username+"-user'>"
-				+ "<h4 class='panel-title'><a>"+p.getUsername()+"</a></h4>" + "</div>"
+				+ "<h4 class='panel-title'><a>"+"@"+p.getUsername()+"</a></h4>" + "</div>"
 			    + "<div id='"+username+"-user' class='panel-collapse collapse'>"
 			    + "<div class='panel-body'>"
 			    + "<div class='container'>"
@@ -467,7 +467,7 @@ public class BrowserFeed extends Thread {
 		String html = "<div class='thumbnail'>"
 				// add new image!
 				+ "<img class='foodimage' src='img/yum1.jpg' alt='sampleimage' value='"+p.getName()+"' id='test'>"
-				+ "<div class='caption'>" + "<h3>" + p.getName() + "</h3>" + "<p><a href='#'>" + p.getUsername()
+				+ "<div class='caption'>" + "<h3>" + p.getName() + "</h3>" + "<p><a href='#'>" + "@"+p.getUsername()
 				+ "</a></p>" + "<div class='panel-group'>" + "<div class='panel panel-default'>"
 				+ "<div class='panel-heading' data-toggle='collapse' href='#" + p.getName().replaceAll("\\s", "")
 				+ "-result'" + "<h4 class='panel-title'><a>More</a></h4></div>" + "<div id='"
