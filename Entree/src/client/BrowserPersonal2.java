@@ -214,7 +214,7 @@ public class BrowserPersonal2 {
 					DOMElement logout = document.findElement(By.className("logout"));
 
 					DOMElement id = document.findElement(By.className("id"));
-					id.setInnerHTML(currUser);
+					id.setInnerHTML("@" + currUser);
 
 					// attempting to navigate by clicking
 					logout.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
