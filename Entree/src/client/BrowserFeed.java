@@ -338,7 +338,7 @@ public class BrowserFeed extends Thread {
 			public void onFinishLoadingFrame(FinishLoadingEvent event) {
 				if (event.isMainFrame()) {
 					DOMDocument document = event.getBrowser().getDocument();
-					List<DOMElement> buttons = document.findElements(By.className("btn-primary"));
+					List<DOMElement> buttons = document.findElements(By.className("reheat"));
 					for (DOMElement button : buttons) {
 						button.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
 							public void handleEvent(DOMEvent event) {
@@ -360,7 +360,7 @@ public class BrowserFeed extends Thread {
 										div.setInnerHTML("<h3>" + p.getName() + "</h3>" + "<p>"
 												+ "@" + p.getUsername() + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
 												+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>" + "<p>"
-												+ "<p class='btn btn-primary' role='button' name='" + p.getName() + "post'><span class ='"
+												+ "<p class='btn btn-primary reheat' role='button' name='" + p.getName() + "post'><span class ='"
 												+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
 												+ "<a href='#' class='btn btn-default foodinfo' role='button' data-toggle='modal' data-target='#"
 												+ p.getName().replaceAll("\\s", "") + "'>More</a>" + "</p>");
@@ -397,7 +397,7 @@ public class BrowserFeed extends Thread {
 				+ p.getName() + "'>" + "<div class='caption' id = '" + p.getName().replaceAll("\\s", "") + "post'>" + "<h3>" + p.getName() + "</h3>" + "<p>" +"<a href='#' value='"+p.getUsername()+"' class='toprofile'>"
 				+ "@" + p.getUsername() + "</a>" + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
 				+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>" + "<p>"
-				+ "<p class='btn btn-primary' role='button' name='" + p.getName() + "'><span class ='"
+				+ "<p class='btn btn-primary reheat' role='button' name='" + p.getName() + "'><span class ='"
 				+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
 				+ "<a href='#' class='btn btn-default foodinfo' role='button' data-toggle='modal' data-target='#"
 				+ p.getName().replaceAll("\\s", "") + "'>More</a>" + "</p>" + "</div>" + "</div>";

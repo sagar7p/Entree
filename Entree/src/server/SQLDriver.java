@@ -135,6 +135,7 @@ public class SQLDriver {
 	//add heat to the database
 	public void addHeat(String Recipe, String user) {
 		try {
+			System.out.println("Heat added");
 			PreparedStatement ps = con.prepareStatement(addHeat);
 			ps.setString(1, Recipe);
 			addItem(user,Recipe,1);
