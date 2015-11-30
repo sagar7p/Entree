@@ -137,11 +137,13 @@ public class PersonalPage {
 		if (!followers.isEmpty()) {	
 			for (int i = 0; i < followers.size(); i++) {
 				recipes = sqlD.addItem(followers.get(i),null,1);
-				if(allProfiles.get(i).getPosts().size() < recipes.length) {
-					Post post = sqlD.getRecipe(recipes[recipes.length - 1]);
-					allProfiles.get(i).addRecipe(post);
-					sqlD.stop();
-					return post;
+				if(recipes != null) {
+					if(allProfiles.get(i).getPosts().size() < recipes.length) {
+						Post post = sqlD.getRecipe(recipes[recipes.length - 1]);
+						allProfiles.get(i).addRecipe(post);
+						sqlD.stop();
+						return post;
+					}
 				}
 			}
 		}
