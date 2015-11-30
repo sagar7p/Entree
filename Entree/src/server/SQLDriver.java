@@ -48,8 +48,8 @@ public class SQLDriver {
 	
 	public void connect() {
 		try {
-//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Entree?user=root&password=");
-			con = DriverManager.getConnection("jdbc:mysql://entree-repo.cqemh2gaogyy.us-west-2.rds.amazonaws.com:3306/Entree?user=kevin&password=pass");
+           con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Entree?user=root&password=");
+//			con = DriverManager.getConnection("jdbc:mysql://entree-repo.cqemh2gaogyy.us-west-2.rds.amazonaws.com:3306/Entree?user=kevin&password=pass");
 		} catch (SQLException e) {
 			System.out.println("Could not connect");
 			try {

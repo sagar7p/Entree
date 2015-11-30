@@ -152,15 +152,12 @@ public class BrowserPersonal{
     					   profile.createPost(new Post(recipe.getString(), profile.getUsername(), 0, ingredients.getString().split("[,]"), instructions.getString().split("\\n"),new SimpleDateFormat("yyyyMMddhhmmss").format(new Date())));	
     					   addRecipeToHTML(event,false);
     					   addActionListener(document);
-    					   DOMElement modal = document.findElement(By.id("addrecipe"));
-    					   String html = modal.getInnerHTML();
-    					   modal.setInnerHTML("");
-    					   modal.setInnerHTML(html);
     				   }
     			   }, false);
     		   }
     	   }
        });
+       
        browser.addLoadListener(new LoadAdapter() {
            @Override
            public void onFinishLoadingFrame(FinishLoadingEvent event) {
