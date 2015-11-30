@@ -36,6 +36,7 @@ public class BrowserFeed extends Thread {
 	private PersonalPage profile;
 	private Browser browser;
 	private Vector<PersonalPage> allProfiles;
+	private SQLDriver sq;
 	
 	 //public static void main(String[] args) { new BrowserFeed("@sagar"); }
 	 
@@ -67,7 +68,7 @@ public class BrowserFeed extends Thread {
 		monthMap.put("12", "December");
 		profile = new PersonalPage(username);
 		System.out.println(profile.getFollowers());
-		SQLDriver sq = new SQLDriver();
+		sq = new SQLDriver();
 		sq.connect();
 		browser = new Browser();
 		BrowserView browserView = new BrowserView(browser);
@@ -496,7 +497,7 @@ public class BrowserFeed extends Thread {
 				e.printStackTrace();
 			}
 			Post post = profile.getNumOfPosts(allProfiles); 
-			if (post != null) {
+			if (post != null && !sq.isRecipe(profile.getUsername(), post.getName())) {
 				System.out.println("recipe added: " + post.getName());
 				DOMDocument document = browser.getDocument();
 				DOMElement div = document.findElement(By.className("feed"));
@@ -508,13 +509,7 @@ public class BrowserFeed extends Thread {
 						allProfiles.add(i, new PersonalPage(post.getUsername()));
 					}
 				}
-				System.out.println(post.getUsername() + " " + profile.getUsername());
-				/*if(post.getUsername() == profile.getUsername()) {
-					ArrayList<Post> newPosts = (ArrayList<Post>) profile.getPosts();
-					newPosts.add(post);
-					profile.SetRecipes(newPosts);
-					System.out.println("New self post");
-				}*/
+				System.out.println(post.getUsername() + " " + profile.getUsername() + " " + post.getName());
 			}
 			
 		}

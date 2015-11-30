@@ -424,12 +424,24 @@ public class SQLDriver {
 			e.printStackTrace();
 		}
 		
-		return exists;
+		return exists;	
 		
-		
-		
-		
-		
+	}
+	
+	public boolean isRecipe(String username, String item) {
+		try {
+			ResultSet set = getUserData(username);
+			String list = set.getString(5);
+			String [] recipes = list.split("[,]");
+			
+			for(int i = 0; i < recipes.length; i++) {
+				if(recipes[i].replaceAll("\\s", "").equals(item.replaceAll("\\s", "")))
+					return true;			
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
 	}
 
 	

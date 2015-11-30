@@ -127,11 +127,14 @@ public class PersonalPage {
 	public Post getNumOfPosts(Vector<PersonalPage> allProfiles) {
 		sqlD.connect();
 		String[] recipes = sqlD.addItem(username,null,1);
-		if(recipeList.size() < recipes.length) {
-			Post post = sqlD.getRecipe(recipes[recipes.length - 1]);
-			sqlD.stop();
-			recipeList.add(post);
-			return post;
+		if(recipes != null) {
+			if(recipeList.size() < recipes.length) {
+				Post post = sqlD.getRecipe(recipes[recipes.length - 1]);
+				sqlD.stop();
+				recipeList.add(post);
+				System.out.println("Thread" + post.getName());
+				return post;
+			}
 		}
 		List<String> followers = getFollowing();
 		if (!followers.isEmpty()) {	
