@@ -340,7 +340,7 @@ public class BrowserPersonal2 {
 				+ "<div class='modal-dialog'>" + "<!-- Modal content-->" + "<div class='modal-content'>"
 				+ "	<div class='modal-header'>"
 				+ "		<button type='button' class='close' data-dismiss='modal'>&times;</button>"
-				+ "		<h4 class='modal-title'>'" + p.getName() + "'</h4>" + "	</div>" + "	<div class='modal-body'>"
+				+ "		<h4 class='modal-title'>" + p.getName() + "</h4>" + "	</div>" + "	<div class='modal-body'>"
 				// substitute the turkey.jpg with whatever the post image
 				// actually is
 				+ "		<img class='foodimage' src='" + "img/turkey.jpg" + "' width='100%' value='" + p.getName() + "'>"
