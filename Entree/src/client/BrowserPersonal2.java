@@ -187,7 +187,7 @@ public class BrowserPersonal2 {
 					DOMDocument document = event.getBrowser().getDocument();
 					
 					DOMElement user = document.findElement(By.className("USERNAME"));
-					user.setInnerHTML(profile.getUsername());
+					user.setInnerHTML("@" + profile.getUsername());
 					
 					DOMElement name = document.findElement(By.className("fullname"));
 					name.setInnerHTML(profile.getFullName());
