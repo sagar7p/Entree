@@ -34,8 +34,10 @@ public class PersonalPage {
 		String [] following = sqlD.addItem(user,null,3);
 		String [] groceries = sqlD.addItem(user,null,4);
 		if (recipes != null) {
-			for(int i = 0; i < recipes.length; i++) {			
-				recipeList.add(sqlD.getRecipe(recipes[i]));
+			for(int i = 0; i < recipes.length; i++) {
+				Post post = sqlD.getRecipe(recipes[i]);
+				if(post != null)
+					recipeList.add(post);
 			}
 		}
 		if(followers != null) {
