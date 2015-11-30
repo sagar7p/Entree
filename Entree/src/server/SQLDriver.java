@@ -374,7 +374,8 @@ public class SQLDriver {
 			}
 			for(int i = 0; i < counter; i++) {
 				if(usernames[i].toLowerCase().contains(username.toLowerCase())) {
-					users.add(usernames[i]);
+					if(!usernames[i].equals("guest"))
+						users.add(usernames[i]);
 				}
 			}
 			return users;
