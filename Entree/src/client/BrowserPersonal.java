@@ -125,7 +125,7 @@ public class BrowserPersonal{
     			   DOMElement logout = document.findElement(By.className("logout"));
     			   
     			   DOMElement id = document.findElement(By.className("id"));
-				   id.setInnerHTML(username);
+				   id.setInnerHTML("@" + username);
     			   
     			   //attempting to navigate by clicking
     			   logout.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
@@ -401,7 +401,7 @@ public class BrowserPersonal{
                      + "<div class='caption'>"
                      +   "<h3>"+p.getName()+"</h3>"
                      +  "<p>"+"<a href='#' value='"+p.getUsername()+"' class='toprofile'>"
-     				 + p.getUsername() + "</a>"+"</p>"
+     				 + "@" + p.getUsername() + "</a>"+"</p>"
      				 + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
      				 + p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>"
                      +     "<p>"
