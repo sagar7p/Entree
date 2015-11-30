@@ -370,7 +370,7 @@ public class BrowserPersonal{
 					for(int i = 0; i < p.getIngredientList().length; i++){
 						String[] currList =sq.addItem(profile.getUsername(), p.getIngredientList()[i], 4);
 						String[] afterList = sq.addItem(profile.getUsername(), null, 4);
-						if(currList.length != afterList.length){
+						if(currList==null || afterList == null || currList.length != afterList.length){
 							DOMElement list = document.findElement(By.id("groceryList"));
 	    					list.setInnerHTML(list.getInnerHTML() + "<li class='list-group-item'>"+ p.getIngredientList()[i] + "</li>");
 						}
