@@ -29,6 +29,52 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+  <style>
+
+  body {
+    background-image:url("img/loginbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  
+
+  .container {
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    width: 65%;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 10%;
+    
+    -webkit-column-count: 2;
+    column-count:2;
+  }
+
+  .btn {
+    
+    margin-left: 0;
+    margin-top: 10px;
+
+  }
+
+  .noaccount {
+    margin-top: 30px;
+  }
+
+
+  .Error {
+    color: red;
+  }
+
+  .form-control {
+    margin-top: 10px;
+  }
+
+
+
+  </style>
     
   </head>
 
@@ -37,26 +83,30 @@
     <div class="container">
 
      <form class="form-signin">
+        <div class="left">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" class="form-control USERNAME" placeholder="Email address" required="" autofocus="">
+
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="text" id="inputEmail" class="form-control USERNAME" placeholder="Username" required="" autofocus="">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control PASSWORD" placeholder="Password" required="" value="">
-        <!--<div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>-->
         
-        <div class="Error">This text will change if there is an error</div>
+        
+        <strong><div class="Error">This text will change if there is an error</div> </strong>
       </form>
 
       <button class="btn btn-lg btn-primary btn-block signin" type="">Sign in</button>
+    </div>
+      <br> <br>
+      <div class="right">
        <!-- Button trigger modal -->
-      <button class="btn btn-lg btn-primary btn-block register" type="" data-toggle="modal" data-target="#register">Register</button>
-      <button class="btn btn-lg btn-primary btn-block guestmode" type="">Guest Mode</button>
-      
+       
+       <div class="noaccount"><h2 class="form-signin-heading">Don't have an account?</h2></div>
+      <div class="span"> <button class="btn btn-lg btn-primary btn-block register" type="" data-toggle="modal" data-target="#register">Register</button> </div>
+      <div class="span1"><button class="btn btn-lg btn-primary btn-block guestmode" type="">Guest Mode</button> </div>
+      </div>
 
+     
       
         <!-- Modal -->
         <div class="modal fade" id="register" role="dialog" >
