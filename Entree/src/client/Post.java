@@ -55,10 +55,10 @@ public class Post {
 		String minute = date.substring(10, 12);
 		String total = month + " "+ day + ", " + year + " " + hour + ":" + minute;
 		if(AM == true){
-			total +=" AM";
+			total +=" PM";
 		}
 		else{
-			total += " PM";
+			total += " AM";
 		}
 		System.out.println(month);
 		return total;

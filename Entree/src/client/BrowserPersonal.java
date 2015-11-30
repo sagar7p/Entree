@@ -318,14 +318,13 @@ public class BrowserPersonal{
     				   public void handleEvent(DOMEvent event) {
     					   JSValue newItem = browser.executeJavaScriptAndReturnValue("document.getElementById('addField').value");
     					   String newItemString = newItem.getString();
-    					   if(newItemString == null || newItemString == ""){
+    					   if(newItemString == null || newItemString.equals("")){
     						   return;
     					   }
     					   sq.addItem(profile.getUsername(), newItemString, 4);
     					   DOMElement list = document.findElement(By.id("groceryList"));
     					   list.setInnerHTML(list.getInnerHTML() + "<li class='list-group-item'>"+ newItemString + "</li>");
-    					   System.out.println("after");
-    					   
+    					   browser.executeJavaScript("document.getElementById('addField').value = ''");
     					   
     				   }
     			   }, false);
