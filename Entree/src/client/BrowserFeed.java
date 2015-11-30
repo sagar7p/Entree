@@ -258,7 +258,9 @@ public class BrowserFeed extends Thread {
 									allProfiles.add(pp);
 									for (int j = 0; j < pp.getPosts().size(); j++) {
 										Post p = pp.getPosts().get(j);
-										name.put(p.getName(),p);
+										if (p!=null) {
+											name.put(p.getName(),p);	
+										}
 									}
 								}
 								if(name.size() > 0) {
