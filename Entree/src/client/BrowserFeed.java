@@ -247,7 +247,10 @@ public class BrowserFeed extends Thread {
 							HashMap<String,Post> name = new HashMap<String,Post>();
 							for (int i = 0; i < profile.getPosts().size(); i++) {
 								// System.out.println(profile.getPosts().get(i).getName());
-								name.put(profile.getPosts().get(i).getName(),profile.getPosts().get(i));
+								Post retrievedPost = profile.getPosts().get(i);
+								if (retrievedPost != null) {
+									name.put(retrievedPost.getName(),retrievedPost);
+								}
 							}
 							List<String> followers = profile.getFollowing();
 							if (!followers.isEmpty()) {
