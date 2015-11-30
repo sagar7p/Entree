@@ -339,41 +339,7 @@ public class BrowserFeed extends Thread {
 			public void onFinishLoadingFrame(FinishLoadingEvent event) {
 				if (event.isMainFrame()) {
 					DOMDocument document = event.getBrowser().getDocument();
-					List<DOMElement> buttons = document.findElements(By.className("reheat"));
-					for (DOMElement button : buttons) {
-						button.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
-							public void handleEvent(DOMEvent event) {
-								String postName = button.getAttribute("name");
-								sq.addHeat(postName,username);
-								Post p = sq.getRecipe(postName);
-								String date = p.getParsedDate();
-								String month = date.substring(0, 2);
-								if (monthMap == null) {
-									System.out.println("null");
-								}
-								String rest = date.substring(2);
-								String parsedDate = monthMap.get(month) + rest;
-								List<DOMElement> divs = document.findElements(By.tagName("div"));
-								for(DOMElement div: divs){
-									if(div.getAttribute("id").equals(p.getName().replaceAll("\\s", "")+"post")){
-										System.out.println(p.getNumberOfReheats());
-										System.out.println(div.getInnerHTML());
-										div.setInnerHTML("<h3>" + p.getName() + "</h3>" + "<p>"
-												+ "@" + p.getUsername() + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
-												+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>" + "<p>"
-												+ "<p class='btn btn-primary reheat' role='button' name='" + p.getName() + "post'><span class ='"
-												+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
-												+ "<a href='#' class='btn btn-default foodinfo' role='button' data-toggle='modal' data-target='#"
-												+ p.getName().replaceAll("\\s", "") + "'>More</a>" + "</p>");
-										break;
-									}
-									
-								}
-								
-							}
-						}, false);
-
-					}
+					addNewHeat(document);
 				}
 			}
 		});
@@ -487,6 +453,44 @@ public class BrowserFeed extends Thread {
 		return html;
 	}
 	
+	public void addNewHeat(DOMDocument document) {
+		List<DOMElement> buttons = document.findElements(By.className("reheat"));
+		for (DOMElement button : buttons) {
+			button.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
+				public void handleEvent(DOMEvent event) {
+					String postName = button.getAttribute("name");
+					sq.addHeat(postName,profile.getUsername());
+					Post p = sq.getRecipe(postName);
+					String date = p.getParsedDate();
+					String month = date.substring(0, 2);
+					if (monthMap == null) {
+						System.out.println("null");
+					}
+					String rest = date.substring(2);
+					String parsedDate = monthMap.get(month) + rest;
+					List<DOMElement> divs = document.findElements(By.tagName("div"));
+					for(DOMElement div: divs){
+						if(div.getAttribute("id").equals(p.getName().replaceAll("\\s", "")+"post")){
+							System.out.println(p.getNumberOfReheats());
+							System.out.println(div.getInnerHTML());
+							div.setInnerHTML("<h3>" + p.getName() + "</h3>" + "<p>"
+									+ "@" + p.getUsername() + "</p>" + "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
+									+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>" + "<p>"
+									+ "<p class='btn btn-primary reheat' role='button' name='" + p.getName() + "post'><span class ='"
+									+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
+									+ "<a href='#' class='btn btn-default foodinfo' role='button' data-toggle='modal' data-target='#"
+									+ p.getName().replaceAll("\\s", "") + "'>More</a>" + "</p>");
+							break;
+						}
+						
+					}
+					
+				}
+			}, false);
+
+		}
+	}
+	
 	public void run() {
 		System.out.println("new thread");
 		while(true) {
@@ -502,6 +506,7 @@ public class BrowserFeed extends Thread {
 				DOMDocument document = browser.getDocument();
 				DOMElement div = document.findElement(By.className("feed"));
 				div.setInnerHTML(addPostDiv(post) + div.getInnerHTML());
+				addNewHeat(document);
 				browser.executeJavaScript(updatePicture());
 				for(int i = 0; i< allProfiles.size(); i++) {
 					if(allProfiles.get(i).getUsername() == post.getUsername()) {
