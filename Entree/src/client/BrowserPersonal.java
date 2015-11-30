@@ -177,6 +177,27 @@ public class BrowserPersonal{
     	    }
     	});
  //search bar
+       browser.addLoadListener(new LoadAdapter(){
+     	  public void onFinishLoadingFrame(FinishLoadingEvent event){
+     	  if(event.isMainFrame()){
+     	  DOMDocument document = event.getBrowser().getDocument();
+                    List<DOMElement> buttons = document.findElements(By.className("doneshopping"));
+                    for (DOMElement button : buttons) {
+                 	  button.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
+                 		  public void handleEvent(DOMEvent event) {
+                 			  sq.doneShopping(profile.getUsername());
+                 			  DOMElement list = document.findElement(By.id("groceryList"));
+					     	  for(int i = 0; i < profile.getGroceryList().size(); i++){				
+					     		  list.setInnerHTML("");				
+					     	  }
+					     }				
+					}, false);
+                 }					
+			}				
+		}
+
+        });
+       
  		browser.addLoadListener(new LoadAdapter() {
  			@Override
  			public void onFinishLoadingFrame(FinishLoadingEvent event) {
@@ -283,20 +304,7 @@ public class BrowserPersonal{
     	   public void onFinishLoadingFrame(FinishLoadingEvent event){
     		   if(event.isMainFrame()){
     			   DOMDocument document = event.getBrowser().getDocument();
-                   List<DOMElement> buttons = document.findElements(By.className("doneshopping"));
-                   for (DOMElement button : buttons) {
-                	   button.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
-    				   public void handleEvent(DOMEvent event) {
-    					   sq.doneShopping(profile.getUsername());
-    					   DOMElement list = document.findElement(By.id("groceryList"));
-    					   for(int i = 0; i < profile.getGroceryList().size(); i++){
-    						   list.setInnerHTML("");
-    					   }
-    					   
-    				   }
-    			   }, false);
-                	  
-                   }
+                  
     		   }
     	   }
        });
@@ -332,24 +340,6 @@ public class BrowserPersonal{
     		   if(event.isMainFrame()){
     			   DOMDocument document = event.getBrowser().getDocument();
 
-    			   List<DOMElement> buttons = document.findElements(By.className(("addtogrocery")));
-    			   for(DOMElement addButton : buttons){
-						addButton.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
-							public void handleEvent(DOMEvent event){
-								String postName = addButton.getAttribute("grocery");
-								Post p = sq.getRecipe(postName);
-								for(int i = 0; i < p.getIngredientList().length; i++){
-									String[] currList =sq.addItem(profile.getUsername(), p.getIngredientList()[i], 4);
-									String[] afterList = sq.addItem(profile.getUsername(), null, 4);
-									if(currList.length != afterList.length){
-										DOMElement list = document.findElement(By.id("groceryList"));
-				    					list.setInnerHTML(list.getInnerHTML() + "<li class='list-group-item'>"+ p.getIngredientList()[i] + "</li>");
-									}
-								}
-								
-							}
-						}, false);
-    			   }
     			   addActionListener(document);
     		   }
     	   }
@@ -384,8 +374,7 @@ public class BrowserPersonal{
 							DOMElement list = document.findElement(By.id("groceryList"));
 	    					list.setInnerHTML(list.getInnerHTML() + "<li class='list-group-item'>"+ p.getIngredientList()[i] + "</li>");
 						}
-					}
-					
+					}				
 				}
 			}, false);
 	   }
@@ -489,5 +478,6 @@ public class BrowserPersonal{
 	           +"query.find({success: function(results) {var recipe = results[0];var photo = recipe.get('File');foodimage.attr('src',photo.url());foodimage.css('width','100%');},error: function(error) {console.log('error')}});});";
 	     return parse;
 	}
+   
    
 }
