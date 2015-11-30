@@ -72,6 +72,9 @@
     margin-top: 10px;
   }
 
+  .signin {
+    margin-left: 25px;
+  }
 
 
   </style>
@@ -83,7 +86,6 @@
     <div class="container">
 
      <form class="form-signin">
-        <div class="left">
         <h2 class="form-signin-heading">Please sign in</h2>
 
         <label for="inputEmail" class="sr-only">Username</label>
@@ -92,19 +94,18 @@
         <input type="password" id="inputPassword" class="form-control PASSWORD" placeholder="Password" required="" value="">
         
         
-        <strong><div class="Error">This text will change if there is an error</div> </strong>
+        <strong><div class="Error"></div> </strong>
       </form>
 
       <button class="btn btn-lg btn-primary btn-block signin" type="">Sign in</button>
-    </div>
-      <br> <br>
-      <div class="right">
+    
+      <br> <br> <br>
+      
        <!-- Button trigger modal -->
        
        <div class="noaccount"><h2 class="form-signin-heading">Don't have an account?</h2></div>
-      <div class="span"> <button class="btn btn-lg btn-primary btn-block register" type="" data-toggle="modal" data-target="#register">Register</button> </div>
-      <div class="span1"><button class="btn btn-lg btn-primary btn-block guestmode" type="">Guest Mode</button> </div>
-      </div>
+       <button class="btn btn-lg btn-primary btn-block register" type="" data-toggle="modal" data-target="#register">Register</button> 
+      <button class="btn btn-lg btn-primary btn-block guestmode" type="">Guest Mode</button> 
 
      
       
