@@ -97,7 +97,7 @@ public class BrowserPersonal2 {
  							// call search on searchtext
  							if (searchtext.getString().substring(0, 1).equals("@")) {
  								//USER NAME
- 								Set<PersonalPage> toAdd = sq.searchAllUsers(searchtext.getString());
+ 								Set<PersonalPage> toAdd = sq.searchAllUsers(searchtext.getString().substring(1));
  								List<DOMElement> divs = document.findElements(By.tagName("div"));
  								if (!toAdd.isEmpty()) {
  									for (DOMElement div : divs) {
