@@ -105,7 +105,11 @@ public class BrowserFeed extends Thread {
 					DOMElement logout = document.findElement(By.className("logout"));
 					
 					DOMElement id = document.findElement(By.className("id"));
-					id.setInnerHTML("@"+username);
+					if (username.equals("@guest")) {
+						id.setInnerHTML(username);
+					} else {
+						id.setInnerHTML("@"+username);
+					}
 
 					// attempting to navigate by clicking
 					logout.addEventListener(DOMEventType.OnClick, new DOMEventListener() {
@@ -372,7 +376,7 @@ public class BrowserFeed extends Thread {
 	}
 
 	public String addFeaturedPostDiv(Post p) {
-		String html = "<div class='thumbnail'>" + "<img class='foodimage' src='img/yum5.jpg' alt='sampleimage' value='"
+		String html = "<div class='thumbnail'>" + "<img class='foodimage' src='' alt='sampleimage' value='"
 				+ p.getName() + "'>" + "<div class='caption'>" + "<p>"
 				+ "<a href='#' class='btn btn-default btn-block foodinfo' role='button' data-toggle='modal' data-target='#"
 				+ p.getName().replaceAll("\\s", "") + "'>More</a>" + "</p>" + "</div>" + "</div>";

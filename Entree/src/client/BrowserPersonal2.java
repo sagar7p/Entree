@@ -326,7 +326,7 @@ public class BrowserPersonal2 {
 		String rest = date.substring(2);
 		String parsedDate = monthMap.get(month) + rest;
 		String html = "<div class='thumbnail'>" + "<img class='foodimage' src='' value='" + p.getName() + "'>"
-				+ "<div class='caption'>" + "<h3>" + p.getName() + "</h3>" + "<p>" + p.getUsername() + "</p>"
+				+ "<div class='caption'>" + "<h3>" + p.getName() + "</h3>" + "<p>" + "@" + p.getUsername() + "</p>"
 						+ "<p><time>" + parsedDate + "</time></p>" + "<p><i>"
 						+ p.getNumberOfReheats() + "<span class = 'glyphicon glyphicon-fire'></span></i></p>"
 				+ "<a href='#' class='btn btn-default btn-block' role='button' data-toggle='modal' data-target='#"
