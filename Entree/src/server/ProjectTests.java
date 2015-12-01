@@ -55,7 +55,7 @@ public class ProjectTests {
 		System.out.println(profile1.getFollowing());*/
 		//msql.addItem("@sagar", "@sahil", 3);
 		//System.out.println(msql.unFollow("@sagar", "@kevin", true));
-		System.out.println(msql.isRecipe("sagar", "Turkey Gravy"));
+		//System.out.println(msql.isRecipe("sagar", "Turkey Gravy"));
 		msql.stop();
 	}
 	

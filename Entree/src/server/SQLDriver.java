@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -428,7 +429,7 @@ public class SQLDriver {
 		
 	}
 	
-	public boolean isRecipe(String username, String item) {
+	public boolean isRecipe(String username, String item, HashMap<String,Post> name) {
 		try {
 			ResultSet set = getUserData(username);
 			String list = set.getString(5);
@@ -438,6 +439,8 @@ public class SQLDriver {
 				if(recipes[i].replaceAll("\\s", "").equals(item.replaceAll("\\s", "")))
 					return true;			
 			}
+			if(name.containsKey(item))
+				return true;
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}

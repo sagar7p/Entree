@@ -37,6 +37,7 @@ public class BrowserFeed extends Thread {
 	private Browser browser;
 	private Vector<PersonalPage> allProfiles;
 	private SQLDriver sq;
+	private HashMap<String,Post> name;
 	
 	 //public static void main(String[] args) { new BrowserFeed("@sagar"); }
 	 
@@ -248,7 +249,7 @@ public class BrowserFeed extends Thread {
 					List<DOMElement> divs = document.findElements(By.tagName("div"));
 					for (DOMElement div : divs) {
 						if (div.getAttribute("class").equals("feed") && !username.equals("@guest")) {
-							HashMap<String,Post> name = new HashMap<String,Post>();
+							name = new HashMap<String,Post>();
 							for (int i = 0; i < profile.getPosts().size(); i++) {
 								// System.out.println(profile.getPosts().get(i).getName());
 								Post retrievedPost = profile.getPosts().get(i);
@@ -484,6 +485,13 @@ public class BrowserFeed extends Thread {
 									+ "glyphicon glyphicon-fire' ></span>&nbsp;Reheat</p>"
 									+ "<a href='#' class='btn btn-default foodinfo' role='button' data-toggle='modal' data-target='#"
 									+ p.getName().replaceAll("\\s", "") + "'>More</a>" + "</p>");
+							for(int i = 0; i < allProfiles.size(); i++) {
+								if(allProfiles.get(i).getUsername().equals(p.getUsername())) {
+									PersonalPage page = new PersonalPage(p.getUsername());
+									allProfiles.remove(i);
+									allProfiles.add(i, page);
+								}
+							}
 							break;
 						}
 						
@@ -505,7 +513,7 @@ public class BrowserFeed extends Thread {
 				e.printStackTrace();
 			}
 			Post post = profile.getNumOfPosts(allProfiles); 
-			if (post != null && !sq.isRecipe(profile.getUsername(), post.getName())) {
+			if (post != null && !sq.isRecipe(profile.getUsername(), post.getName(),name)) {
 				System.out.println("recipe added: " + post.getName());
 				DOMDocument document = browser.getDocument();
 				DOMElement div = document.findElement(By.className("feed"));
@@ -513,7 +521,7 @@ public class BrowserFeed extends Thread {
 				addNewHeat(document);
 				browser.executeJavaScript(updatePicture());
 				for(int i = 0; i< allProfiles.size(); i++) {
-					if(allProfiles.get(i).getUsername() == post.getUsername()) {
+					if(allProfiles.get(i).getUsername().equals(post.getUsername())) {
 						allProfiles.remove(i);
 						allProfiles.add(i, new PersonalPage(post.getUsername()));
 					}
