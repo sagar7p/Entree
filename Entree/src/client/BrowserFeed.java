@@ -512,8 +512,11 @@ public class BrowserFeed extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			for(String key : name.keySet()) {
+				System.out.println(key);
+			}
 			Post post = profile.getNumOfPosts(allProfiles); 
-			if (post != null && !sq.isRecipe(profile.getUsername(), post.getName(),name)) {
+			if (post != null && !sq.isRecipe(profile.getUsername(), post.getName(),name) && !name.containsKey(post.getName())) {
 				System.out.println("recipe added: " + post.getName());
 				DOMDocument document = browser.getDocument();
 				DOMElement div = document.findElement(By.className("feed"));

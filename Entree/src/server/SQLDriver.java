@@ -439,8 +439,11 @@ public class SQLDriver {
 				if(recipes[i].replaceAll("\\s", "").equals(item.replaceAll("\\s", "")))
 					return true;			
 			}
-			if(name.containsKey(item))
-				return true;
+			for(String key : name.keySet()) {
+				System.out.println(key + " "+ item);
+				if(key.replaceAll("\\s", "").equals(item.replaceAll("\\s", "")))
+					return true;
+			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}

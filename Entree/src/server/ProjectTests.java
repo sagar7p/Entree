@@ -1,6 +1,6 @@
 package server;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -55,7 +55,9 @@ public class ProjectTests {
 		System.out.println(profile1.getFollowing());*/
 		//msql.addItem("@sagar", "@sahil", 3);
 		//System.out.println(msql.unFollow("@sagar", "@kevin", true));
-		//System.out.println(msql.isRecipe("sagar", "Turkey Gravy"));
+		HashMap<String,Post> map = new HashMap<String,Post>();
+		map.put("Greeen Bean Salad", msql.getRecipe("Turkey Gravy"));
+		System.out.println(msql.isRecipe("sagar", "Greeen Bean Salad",map));
 		msql.stop();
 	}
 	
